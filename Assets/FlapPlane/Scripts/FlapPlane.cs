@@ -14,10 +14,14 @@ public class FlapPlane : MonoBehaviour
 
     bool isFlap = false;
 
-    public bool gomMode = false;
+    public bool godMode = false;
+
+    GameManager gameManager;
 
     void Start()
     {
+        gameManager = GameManager.Instance;
+
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
 
@@ -36,7 +40,19 @@ public class FlapPlane : MonoBehaviour
     {
         if (isDead)
         {
-            
+            if (deathCooldown <= 0)
+            {
+                // 게임 재시작
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                {
+                    gameManager.RestartGame();
+                }
+
+            }
+            else
+            {
+                deathCooldown -= Time.deltaTime;
+            }
         }
         else
         {
@@ -62,6 +78,21 @@ public class FlapPlane : MonoBehaviour
 
         _rigidbody.velocity = velocity;
 
-        float angle = Mathf.Clamp(_rigidbody.velocity.y, -90, 90);
+        float angle = Mathf.Clamp( (_rigidbody.velocity.y * 10), -90, 90);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (godMode) return;
+
+        if (isDead) return;
+        
+        isDead = true;
+        deathCooldown = 1f;
+
+        animator.SetInteger("IsDie", 1);
+
+        gameManager.GameOver();
     }
 }
