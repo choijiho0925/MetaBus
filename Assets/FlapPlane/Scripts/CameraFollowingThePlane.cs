@@ -13,7 +13,6 @@ public class CameraFollowingThePlane : MonoBehaviour
             return;
 
         offsetX = transform.position.x - target.position.x;
-
     }
 
     void Update()

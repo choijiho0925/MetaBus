@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,24 +12,47 @@ public class GameManager : MonoBehaviour
 
     private int currentScore = 0;
 
+    GameUIManager gameUIManager;
+
+    public GameUIManager GameUIManager { get { return gameUIManager; } }
+
     private void Awake()
     {
         gameManager = this; // 가장 최초의 객체를 설정
+        gameUIManager = FindObjectOfType<GameUIManager>();
+        if(GameUIManager.isPlaying == true)
+        {
+            Time.timeScale = 0.0f;
+        }
+    }
+
+    private void Start()
+    {
+        gameUIManager.UpdateScore(0);
     }
 
     public void GameOver()
     {
         Debug.Log("Game Over");
+        gameUIManager.SetRestart();
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("FlapPlane");
+        gameUIManager.descriptionPanel.SetActive(false);
+        GameUIManager.isPlaying = false;
+    }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     public void AddScore(int score)
     {
         currentScore += score;
         Debug.Log("Score: " + currentScore);
+        gameUIManager.UpdateScore(currentScore);
     }
 }
