@@ -17,19 +17,21 @@ public enum UIState
 
 public class GameUIManager : MonoBehaviour
 {
-    static GameUIManager instance;
-
-    public static GameUIManager Instance { get { return instance; } }
-
     UIState currentState = UIState.Home;
 
     public HomeUI homeUI;
     public GameUI gameUI;
     public ScoreUI scoreUI;
 
+    public static GameUIManager Instance { get; private set; }
+
     private void Awake()
     {
-        instance = this;
+        Instance = this;        
+    }
+
+    private void Start()
+    {
         if (GameManager.isStart == true)
         {
             ChangeState(UIState.Home);
@@ -46,5 +48,10 @@ public class GameUIManager : MonoBehaviour
         homeUI?.SetActive(currentState);
         gameUI?.SetActive(currentState);
         scoreUI?.SetActive(currentState);
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
     }
 }

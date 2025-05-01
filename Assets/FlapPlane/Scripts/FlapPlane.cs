@@ -20,6 +20,8 @@ public class FlapPlane : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameManager.Instance;
+        gameUIManager = GameUIManager.Instance;
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -66,7 +68,7 @@ public class FlapPlane : MonoBehaviour
 
         _rigidbody.gravityScale = 30f;
 
-        GameUIManager.Instance.ChangeState(UIState.Score);
-        GameManager.Instance.GameOver();
+        gameUIManager?.ChangeState(UIState.Score);
+        gameManager?.GameOver();
     }
 }

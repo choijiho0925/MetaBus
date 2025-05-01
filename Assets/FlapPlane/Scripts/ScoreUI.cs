@@ -13,9 +13,9 @@ public class ScoreUI : BaseUI
         return UIState.Score;
     }
 
-    public void SetUI()
+    public void SetUI(int score, int bestScore)
     {
-        scoreText.text = GameManager.Instance.CurrentScore.ToString();
-        bestScoreText.text = GameManager.Instance.BestScore.ToString();
+        scoreText.text = score.ToString();
+        bestScoreText.text = bestScore.ToString();
     }
 }

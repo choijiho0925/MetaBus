@@ -42,6 +42,6 @@ public class Obstacle : MonoBehaviour
     {
         FlapPlane plane = collision.GetComponent<FlapPlane>();
         if (plane != null)
-            gameManager.AddScore(1);
+            gameManager?.AddScore(1);
     }
 }
