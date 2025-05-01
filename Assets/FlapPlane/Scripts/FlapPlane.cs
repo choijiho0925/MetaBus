@@ -16,24 +16,12 @@ public class FlapPlane : MonoBehaviour
     public bool godMode = false;
 
     GameManager gameManager;
-    public GameUIManager gameUIManager;
+    GameUIManager gameUIManager;
 
     void Start()
     {
-        gameManager = GameManager.Instance;
-
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
-
-        if(animator == null)
-        {
-            Debug.LogError("Not Founded Animator");
-        }
-
-        if (_rigidbody == null)
-        {
-            Debug.LogError("Not Founded Rigidbody");
-        }
     }
 
     void Update()
@@ -71,11 +59,14 @@ public class FlapPlane : MonoBehaviour
         if (godMode) return;
 
         if (isDead) return;
-        
+
         isDead = true;
 
         animator.SetInteger("IsDie", 1);
 
-        gameManager.GameOver();
+        _rigidbody.gravityScale = 30f;
+
+        GameUIManager.Instance.ChangeState(UIState.Score);
+        GameManager.Instance.GameOver();
     }
 }

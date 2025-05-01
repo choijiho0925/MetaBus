@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +12,15 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get { return gameManager; } } // 변수를 외부로 가져갈 수 있는 프로퍼티
 
+    public static bool isStart = true; // 처음 시작 여부를 결정한다.
+
     private int currentScore = 0;
+    private int bestScore = 0;
+
+    public int CurrentScore { get => currentScore; }
+    public int BestScore { get => bestScore; }
+
+    private const string BestScoreKey = "BestScore";
 
     GameUIManager gameUIManager;
 
@@ -18,9 +28,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = this; // 가장 최초의 객체를 설정
+        gameManager = this;
+
         gameUIManager = FindObjectOfType<GameUIManager>();
-        if(GameUIManager.isPlaying == true)
+
+        if (isStart == true)
         {
             Time.timeScale = 0.0f;
         }
@@ -28,20 +40,31 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameUIManager.UpdateScore(0);
+        bestScore = PlayerPrefs.GetInt(BestScoreKey);
+        UpdateScore(currentScore);
+    }
+
+    public void UpdateScore(int score)
+    {
+        GameUIManager.Instance.gameUI.SetUI(score);
     }
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
-        gameUIManager.SetRestart();
+        if (bestScore < currentScore)
+        {
+            bestScore = currentScore;
+            PlayerPrefs.SetInt(BestScoreKey, bestScore);
+        }
+        GameUIManager.Instance.scoreUI.SetUI();
     }
 
-    public void RestartGame()
+    public void PlayGame()
     {
+        Time.timeScale = 1.0f;
+        GameUIManager.Instance.ChangeState(UIState.Game);
         SceneManager.LoadScene("FlapPlane");
-        gameUIManager.descriptionPanel.SetActive(false);
-        GameUIManager.isPlaying = false;
+        isStart = false;
     }
 
     public void ExitGame()
@@ -52,7 +75,12 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         currentScore += score;
-        Debug.Log("Score: " + currentScore);
-        gameUIManager.UpdateScore(currentScore);
+        UpdateScore(currentScore);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("FlapPlane");
+        isStart = true;
     }
 }

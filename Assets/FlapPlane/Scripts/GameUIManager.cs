@@ -8,44 +8,43 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using static UnityEditor.ShaderData;
 
+public enum UIState
+{
+    Home,
+    Game,
+    Score,
+}
+
 public class GameUIManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameScoreText;
-    public TextMeshProUGUI bestGameScore;
+    static GameUIManager instance;
 
-    public Image restartPanel;
+    public static GameUIManager Instance { get { return instance; } }
 
-    public GameObject descriptionPanel;
+    UIState currentState = UIState.Home;
 
-    public static bool isPlaying = true;
+    public HomeUI homeUI;
+    public GameUI gameUI;
+    public ScoreUI scoreUI;
 
-    void Start()
+    private void Awake()
     {
-        if (isPlaying)
+        instance = this;
+        if (GameManager.isStart == true)
         {
-            descriptionPanel.SetActive(true);
-        } 
-        restartPanel.gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (Input.anyKeyDown && isPlaying == true)
+            ChangeState(UIState.Home);
+        }
+        else
         {
-            descriptionPanel.gameObject.SetActive(false);
-            Time.timeScale = 1.0f;
+            ChangeState(UIState.Game);
         }
     }
 
-    public void SetRestart()
+    public void ChangeState(UIState state)
     {
-        restartPanel.gameObject.SetActive(true);
-    }
-
-    public void UpdateScore(int score)
-    {
-        scoreText.text = score.ToString();
-        gameScoreText.text = score.ToString();
+        currentState = state;
+        homeUI?.SetActive(currentState);
+        gameUI?.SetActive(currentState);
+        scoreUI?.SetActive(currentState);
     }
 }
