@@ -65,13 +65,13 @@ public class GameManager : MonoBehaviour
         isStart = false;
         if (isGameOver)
         {
-            SceneManager.LoadScene("FlapPlane");
+            SceneManager.LoadScene(1);
         }
     }
 
     public void ExitGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(0);
     }
 
     public void AddScore(int score)
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("FlapPlane");
+        SceneManager.LoadScene(1);
         isStart = true;
     }
     private void OnDestroy()
