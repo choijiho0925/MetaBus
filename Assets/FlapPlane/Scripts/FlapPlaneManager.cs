@@ -72,6 +72,7 @@ public class FlapPlaneManager : MonoBehaviour
     public void ExitGame()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
     }
 
     public void AddScore(int score)
