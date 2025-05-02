@@ -64,6 +64,7 @@ public class InteractionController : BaseInteractionHandler
 
         if (collision.gameObject.CompareTag("Ladder"))
         {
+            if(enterGamePanel != null)
             enterGamePanel.SetActive(false);
         }
     }
