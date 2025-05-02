@@ -6,31 +6,19 @@ public class CharacterCamera : MonoBehaviour
 {
     [SerializeField] Transform character;
     [SerializeField] float cameraSpeed = 5f;
-    Vector2 minBounds;
-    Vector2 maxBounds;
-
-    private Vector3 offset;
-
-    void Start()
-    {
-        offset = transform.position - character.position;
-    }
-
-    void Update()
-    {
-        
-    }
+    [SerializeField]Vector2 minBounds;
+    [SerializeField]Vector2 maxBounds; 
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(character.position.x, character.position.y, -10);
-
-        Vector3 characterPosition = character.position + offset;
+        Vector3 characterPosition = character.position;
         characterPosition.z = transform.position.z;
 
-        characterPosition.x = Mathf.Clamp(characterPosition.x, -13f, 13f);
-        characterPosition.y = Mathf.Clamp(characterPosition.y, -13f, 13f);
+        Vector3 tempPosition = Vector3.Lerp(transform.position, characterPosition, Time.deltaTime * cameraSpeed);
 
-        transform.position = Vector3.Lerp(transform.position, characterPosition, Time.deltaTime * cameraSpeed);
+        tempPosition.x = Mathf.Clamp(tempPosition.x, minBounds.x, maxBounds.x);
+        tempPosition.y = Mathf.Clamp(tempPosition.y, minBounds.y, maxBounds.y);
+
+        transform.position = tempPosition;
     }
 }
