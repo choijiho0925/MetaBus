@@ -3503,6 +3503,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 2029120777}
   cameraSpeed: 5
+  minBounds: {x: -13, y: -13}
+  maxBounds: {x: 13, y: 13}
 --- !u!1 &645166030
 GameObject:
   m_ObjectHideFlags: 0
@@ -18851,7 +18853,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -19174,8 +19176,8 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: c6cdb489b1efc974ebbb2c15a26d9933, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 849315d814a5c544ab031df7407122af, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 9c4de6e5682428e489327da9b946a6d1, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 0878c903fb53b8c4b8eff949f3639340, type: 3}
   - m_RefCount: 8
@@ -19188,8 +19190,8 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: fdb95f2d00e49a6489f96dda1392b4a0, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: 9cadc3bb6d855f7478ee56ea24a12d96, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 9c4de6e5682428e489327da9b946a6d1, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 30
     m_Data:
