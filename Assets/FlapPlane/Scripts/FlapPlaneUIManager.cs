@@ -32,7 +32,7 @@ public class FlapPlaneUIManager : MonoBehaviour
 
     private void Start()
     {
-        if (FlapPlaneManager.isStart == true)
+        if (FlapPlaneManager.IsStart == true)
         {
             ChangeState(UIState.Home);
         }
