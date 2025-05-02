@@ -59,12 +59,16 @@ public class FlapPlaneManager : MonoBehaviour
 
     public void PlayGame()
     {
-
+        IsStart = false;
         Time.timeScale = 1.0f;
         gameUIManager?.ChangeState(UIState.Game);
-        IsStart = false;
+    }
+
+    public void RestartGame()
+    {
         if (isGameOver)
         {
+            gameUIManager?.ChangeState(UIState.Game);
             SceneManager.LoadScene(1);
         }
     }
