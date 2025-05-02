@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : BaseController
+public class PlayerController : BaseController
 {
     protected override void Start()
     {
