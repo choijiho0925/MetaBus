@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
-public class InteractionController : BaseInteractionHandler
+public class InteractionController : MonoBehaviour
 {
     [SerializeField] private Tilemap floor;
     [SerializeField] private Tilemap backDesign;
