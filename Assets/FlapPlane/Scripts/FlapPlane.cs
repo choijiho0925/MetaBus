@@ -15,13 +15,13 @@ public class FlapPlane : MonoBehaviour
 
     public bool godMode = false;
 
-    GameManager gameManager;
-    GameUIManager gameUIManager;
+    FlapPlaneManager gameManager;
+    FlapPlaneUIManager gameUIManager;
 
     void Start()
     {
-        gameManager = GameManager.Instance;
-        gameUIManager = GameUIManager.Instance;
+        gameManager = FlapPlaneManager.Instance;
+        gameUIManager = FlapPlaneUIManager.Instance;
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }

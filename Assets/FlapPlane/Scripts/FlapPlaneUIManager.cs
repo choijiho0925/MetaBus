@@ -15,15 +15,15 @@ public enum UIState
     Score,
 }
 
-public class GameUIManager : MonoBehaviour
+public class FlapPlaneUIManager : MonoBehaviour
 {
     UIState currentState = UIState.Home;
 
-    public HomeUI homeUI;
-    public GameUI gameUI;
-    public ScoreUI scoreUI;
+    public FlapPlaneHomeUI homeUI;
+    public FlapPlaneGameUI gameUI;
+    public FlapPlaneResultUI resultUI;
 
-    public static GameUIManager Instance { get; private set; }
+    public static FlapPlaneUIManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class GameUIManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.isStart == true)
+        if (FlapPlaneManager.isStart == true)
         {
             ChangeState(UIState.Home);
         }
@@ -47,7 +47,7 @@ public class GameUIManager : MonoBehaviour
         currentState = state;
         homeUI?.SetActive(currentState);
         gameUI?.SetActive(currentState);
-        scoreUI?.SetActive(currentState);
+        resultUI?.SetActive(currentState);
     }
 
     private void OnDestroy()

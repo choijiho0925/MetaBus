@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.XR;
 
-public class GameManager : MonoBehaviour
+public class FlapPlaneManager : MonoBehaviour
 {
     private int currentScore = 0;
     private int bestScore = 0;
@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
 
     private const string BestScoreKey = "BestScore";
 
-    GameUIManager gameUIManager;
+    FlapPlaneUIManager gameUIManager;
 
-    public static GameManager Instance { get; private set; }
+    public static FlapPlaneManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameUIManager = GameUIManager.Instance;
+        gameUIManager = FlapPlaneUIManager.Instance;
 
         bestScore = PlayerPrefs.GetInt(BestScoreKey);
         UpdateScore(currentScore);
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
             bestScore = currentScore;
             PlayerPrefs.SetInt(BestScoreKey, bestScore);
         }
-        gameUIManager?.scoreUI.SetUI(currentScore, bestScore);
+        gameUIManager?.resultUI.SetUI(currentScore, bestScore);
     }
 
     public void PlayGame()

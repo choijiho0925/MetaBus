@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BgLooper : MonoBehaviour
+public class FlapPlaneBgLooper : MonoBehaviour
 {
     public int numBgCount = 5;
 
@@ -11,7 +11,7 @@ public class BgLooper : MonoBehaviour
 
     void Start()
     {
-        Obstacle[] obstacles = GameObject.FindObjectsOfType<Obstacle>();
+        FlapPlaneObstacle[] obstacles = GameObject.FindObjectsOfType<FlapPlaneObstacle>();
         obstacleLastPosition = obstacles[0].transform.position;
         obstacleCount = obstacles.Length;
 
@@ -33,7 +33,7 @@ public class BgLooper : MonoBehaviour
             return;
         }
 
-        Obstacle obstacle = collision.GetComponent<Obstacle>();
+        FlapPlaneObstacle obstacle = collision.GetComponent<FlapPlaneObstacle>();
         if (obstacle)
         {
             obstacleLastPosition = obstacle.SetRandomPlace(obstacleLastPosition, obstacleCount);

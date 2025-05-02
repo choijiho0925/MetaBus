@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class FlapPlaneObstacle : MonoBehaviour
 {
     public float highPosY = 1f;
     public float lowPosY = -1f;
@@ -15,11 +15,11 @@ public class Obstacle : MonoBehaviour
 
     public float widthPadding = 4f;
 
-    GameManager gameManager;
+    FlapPlaneManager gameManager;
 
     private void Start()
     {
-        gameManager = GameManager.Instance;
+        gameManager = FlapPlaneManager.Instance;
     }
 
     public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)

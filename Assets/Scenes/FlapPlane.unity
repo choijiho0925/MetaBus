@@ -957,8 +957,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1778018007}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1778018009}
+        m_TargetAssemblyTypeName: FlapPlaneManager, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -1550,8 +1550,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1778018007}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1778018009}
+        m_TargetAssemblyTypeName: FlapPlaneManager, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -1856,7 +1856,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 595907279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5675569dddf8f83488b23e1cc0750796, type: 3}
+  m_Script: {fileID: 11500000, guid: b68dc09d2c761034b8ecee652e9cb657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 915587573}
@@ -3443,7 +3443,7 @@ GameObject:
   - component: {fileID: 1176796867}
   - component: {fileID: 1176796868}
   m_Layer: 5
-  m_Name: ScoreUI
+  m_Name: ResultUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5033,7 +5033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1778018008}
-  - component: {fileID: 1778018007}
+  - component: {fileID: 1778018009}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5041,18 +5041,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1778018007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778018006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dfd294c72a7ce64ba6016662556ca7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1778018008
 Transform:
   m_ObjectHideFlags: 0
@@ -5068,6 +5056,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1778018009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778018006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9784d5cf0af43240a2927bcfdd5296f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGameOver: 0
 --- !u!1 &1819978715
 GameObject:
   m_ObjectHideFlags: 0
@@ -5315,9 +5316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37391b2627fcd3446be7234144df10e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeUI: {fileID: 3765655954107755872}
+  homeUI: {fileID: 1225024879420609910}
   gameUI: {fileID: 595907281}
-  scoreUI: {fileID: 1176796868}
+  resultUI: {fileID: 1176796868}
 --- !u!1 &1880455287
 GameObject:
   m_ObjectHideFlags: 0
@@ -6181,7 +6182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149629293635256097}
-  - component: {fileID: 3765655954107755872}
+  - component: {fileID: 1225024879420609910}
   m_Layer: 5
   m_Name: HomeUI
   m_TagString: Untagged
@@ -6189,6 +6190,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &1225024879420609910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225024879420609909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8dd628bdcbbb404cbeacc670c82907a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1355417340648382485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6369,8 +6382,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1778018007}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1778018009}
+        m_TargetAssemblyTypeName: FlapPlaneManager, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -6399,18 +6412,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3765655954107755872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225024879420609909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c8e6dc423ea5b4ba406968c1e2f223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4298891831740131324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6524,8 +6525,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1778018007}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1778018009}
+        m_TargetAssemblyTypeName: FlapPlaneManager, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:

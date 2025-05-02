@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollowingThePlane : MonoBehaviour
+public class FlapPlaneCamera : MonoBehaviour
 {
     public Transform target;
     float offsetX;
