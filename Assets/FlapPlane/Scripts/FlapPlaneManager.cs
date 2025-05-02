@@ -14,7 +14,7 @@ public class FlapPlaneManager : MonoBehaviour
     public int CurrentScore { get => currentScore; }
     public int BestScore { get => bestScore; }
 
-    public static bool IsStart { get; private set; } = true; // 처음 시작 여부를 결정한다.
+    public static bool IsStart { get; set; } = true; // 처음 시작 여부를 결정한다.
     public bool isGameOver = false; // 게임 오버 여부를 결정한다.
 
     private const string BestScoreKey = "BestScore";
@@ -80,11 +80,6 @@ public class FlapPlaneManager : MonoBehaviour
         UpdateScore(currentScore);
     }
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene(1);
-        IsStart = true;
-    }
     private void OnDestroy()
     {
         Instance = null;        

@@ -7,6 +7,8 @@ TagManager:
   - Background
   - Room
   - Ladder
+  - EnterGamePanel
+  - Npc
   layers:
   - Default
   - TransparentFX
