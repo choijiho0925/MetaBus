@@ -252,13 +252,13 @@ public class JumpMapPlayerController : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("Sword"))
+        if (collision.gameObject.CompareTag("Sword")) // 급하게 잡업하느랴 여기에 집어넣었습니다 ㅠㅠ
         {
            GoMetabus();
         }
     }
 
-    public void GoMetabus()
+    public void GoMetabus() // 급하게 잡업하느랴 여기에 집어넣었습니다 ㅠㅠ
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1f; // 게임 속도 초기화
