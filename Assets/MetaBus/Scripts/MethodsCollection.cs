@@ -14,4 +14,9 @@ public class MethodsCollection : MonoBehaviour
         FlapPlaneManager.IsStart = true;
         //DontDestroyOnLoad();
     }
+
+    public void JumpMap()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

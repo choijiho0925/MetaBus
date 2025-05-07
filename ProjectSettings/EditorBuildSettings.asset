@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FlapPlane.unity
     guid: 9436b8e566c4061459d57efe6b0378fc
+  - enabled: 1
+    path: Assets/Scenes/JumpMap.unity
+    guid: eecc9b25cb3285d419e027b41c9a2735
   m_configObjects: {}

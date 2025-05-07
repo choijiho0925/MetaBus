@@ -11,6 +11,7 @@ public class InteractionController : MonoBehaviour
     [SerializeField] private Tilemap foreDesign;
     [SerializeField] private GameObject enterGamePanel;
     [SerializeField] private GameObject gameDescriptionPanel;
+    [SerializeField] private GameObject JumpMapPanel;
     [SerializeField] private GameObject pressF;
 
     bool isIn = false;
@@ -40,6 +41,12 @@ public class InteractionController : MonoBehaviour
             enterGamePanel.SetActive(true);
         }
 
+        if (collision.gameObject.CompareTag("Stair"))
+        {
+            if (JumpMapPanel != null)
+                JumpMapPanel.SetActive(true);
+        }
+
         if (collision.gameObject.CompareTag("Npc"))
         {
             isIn = true;
@@ -66,6 +73,18 @@ public class InteractionController : MonoBehaviour
         {
             if(enterGamePanel != null)
             enterGamePanel.SetActive(false);
+        }
+
+        if (collision.gameObject.CompareTag("Stair"))
+        {
+            if (JumpMapPanel != null)
+                JumpMapPanel.SetActive(false);
+        }
+
+        if (collision.gameObject.CompareTag("Npc"))
+        {
+            isIn = false;
+            pressF.SetActive(false);
         }
     }
 }
